@@ -21,15 +21,22 @@ try:
 		#Graph Part
 	import matplotlib.pyplot as plt
 	plt.plot(first, last, linewidth=0.5)
+	
+	
 	#choosing title
-	a=input("\n\n\nSet name for your graph: ")
-	plt.title(a, fontsize = 20)
-
-	#choosing label axes
-	x = input("\n\nSet the graph label of first entered values")
-	plt.xlabel(x, fontsize = 15)
-	y = input("\nSet the graph label of second entered values")
-	plt.ylabel(y, fontsize = 15)
+	j=input("Do you want to set labels?")
+	if j == 'y':		
+		a=input("\n\n\nSet name for your graph: ")
+		plt.title(a, fontsize = 20)
+				#choosing label axes
+		x = input("\n\nSet the graph label of first entered values")
+		plt.xlabel(x, fontsize = 15)
+		y = input("\nSet the graph label of second entered values")
+		plt.ylabel(y, fontsize = 15)
+	else:
+		plt.title("Graph", fontsize = 20)
+		plt.xlabel("First", fontsize = 15)
+		plt.ylabel("Last", fontsize = 15)
 
 	#setting size of value shown
 	plt.tick_params(axis='both', labelsize = 10.5)
@@ -37,8 +44,3 @@ try:
 except:
 	print("\n\n\t\t\t\t\t\tInvalid Input")
 print("Exitting Program.. Thank You")
-
-
-
-
-
