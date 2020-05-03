@@ -20,12 +20,18 @@ try:
 	print("Received all values, Entering the graph part")
 		#Graph Part
 	import matplotlib.pyplot as plt
-	plt.plot(first, last, linewidth=0.5)
-	#SCATTERING PLOTTED
-	plt.scatter(first, last, s=20)
-	
+	z = input("Press 's' to scatter, 'p' to plot, ANYOTHER KEY for both functions")
+	if z == 's':
+		#scattering
+		plt.scatter(first, last, s=20)
+	elif z == 'p':
+		#plotting
+		plt.plot(first, last, linewidth=0.5)
+	else:
+		plt.plot(first, last, linewidth=0.5)
+		plt.scatter(first, last, s=20)
 	#choosing title
-	j=input("Do you want to set labels?")
+	j=input("Do you want to set labels? Press 'y' to set or ANYOTHER KEY to reject")
 	if j == 'y':		
 		a=input("\n\n\nSet name for your graph: ")
 		plt.title(a, fontsize = 20)
@@ -45,3 +51,8 @@ try:
 except:
 	print("\n\n\t\t\t\t\t\tInvalid Input")
 print("Exitting Program.. Thank You")
+
+
+
+
+
