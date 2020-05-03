@@ -21,7 +21,8 @@ try:
 		#Graph Part
 	import matplotlib.pyplot as plt
 	plt.plot(first, last, linewidth=0.5)
-	
+	#SCATTERING PLOTTED
+	plt.scatter(first, last, s=20)
 	
 	#choosing title
 	j=input("Do you want to set labels?")
