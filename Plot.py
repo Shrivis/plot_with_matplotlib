@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import re
 
-# creating empty lists
 # re.sub(r"\s+", "", string) will remove previous or trailing spaces from the inpute string
 x = re.sub(r"\s+", "", input("Enter values of x-axis saperated with comma: ")).split(",")
 y = re.sub(r"\s+", "", input("Enter values of y-axis saperated with comma: ")).split(",")
