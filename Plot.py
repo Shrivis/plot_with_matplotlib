@@ -1,58 +1,30 @@
-# creating empty lists 
-first = []
-last = [] 
+import matplotlib.pyplot as plt
+import re
 
- 
-try:
- # number of elements as input
-	n = int(input("Enter number of elements for X-Axis: "))
-	print("\t\t\t\t\tEntering first elements")
-		# iterating till the range
-	for i in range(0, n): 
-		list_1 = float(input()) 
-		first.append(list_1) # adding the element 
-	print("The first entered values are", first) 
-	print("\t\t\t\t\tEnter values for Y-axis")
-	for j in range(0, n):
-		list_2 = float(input())
-		last.append(list_2) 
-	print("The last entered values are", last)
-	print("Received all values, Entering the graph part")
-		#Graph Part
-	import matplotlib.pyplot as plt
-	z = input("Press 's' to scatter, 'p' to plot, ANYOTHER KEY for both functions")
-	if z == 's':
-		#scattering
-		plt.scatter(first, last, s=20)
-	elif z == 'p':
-		#plotting
-		plt.plot(first, last, linewidth=0.5)
-	else:
-		plt.plot(first, last, linewidth=0.5)
-		plt.scatter(first, last, s=20)
-	#choosing title
-	j=input("Do you want to set labels? Press 'y' to set or ANYOTHER KEY to reject")
-	if j == 'y':		
-		a=input("\n\n\nSet name for your graph: ")
-		plt.title(a, fontsize = 20)
-				#choosing label axes
-		x = input("\n\nSet the graph label of first entered values")
-		plt.xlabel(x, fontsize = 15)
-		y = input("\nSet the graph label of second entered values")
-		plt.ylabel(y, fontsize = 15)
-	else:
-		plt.title("Graph", fontsize = 20)
-		plt.xlabel("First", fontsize = 15)
-		plt.ylabel("Last", fontsize = 15)
+# creating empty lists
+# re.sub(r"\s+", "", string) will remove previous or trailing spaces from the inpute string
+x = re.sub(r"\s+", "", input("Enter values of x-axis saperated with comma: ")).split(",")
+y = re.sub(r"\s+", "", input("Enter values of y-axis saperated with comma: ")).split(",")
+if len(x) != len(y):
+    exit("x and y axis aren't equal cannot produce graph")
 
-	#setting size of value shown
-	plt.tick_params(axis='both', labelsize = 10.5)
-	plt.show()
-except:
-	print("\n\n\t\t\t\t\t\tInvalid Input")
-print("Exitting Program.. Thank You")
+# Setting labels
+lables = list(input("Enter title, x-axis, and y-axis lable saperated with comma\nLike: Marks,Score,Subject(Press enter to avoid): ").split(","))
+if len(lables) != 3:
+    lables = ["Graph", "x-axis", "y-axis"]
 
+# Plotting
+ch = input("Type 's' to scatter and 'p' for line plot, ANYOTHER KEY for all functions: ")
+if ch == 's':
+    plt.scatter(x, y, alpha=0.5)
+elif ch == 'p':
+    plt.plot(x, y, alpha=0.5)
+else:
+    plt.plot(x, y, alpha=0.5)
+    plt.scatter(x, y, alpha=0.5) 
 
-
-
-
+plt.title(lables[0])
+plt.xlabel(lables[1])
+plt.ylabel(lables[2])
+plt.style.use('seaborn')
+plt.show()
